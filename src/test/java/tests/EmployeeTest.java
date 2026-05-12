@@ -6,6 +6,13 @@ import org.testng.annotations.Test;
 import pages.DashboardPage;
 import pages.LoginPage;
 import pages.PIMPage;
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class EmployeeTest extends BaseTest {
 
@@ -36,6 +43,13 @@ public class EmployeeTest extends BaseTest {
 		pim.clickSave();
 
 		// Validation
-		Assert.assertTrue(false);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+WebElement successMessage = wait.until(
+        ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//*[contains(text(),'Successfully Saved')]")
+        ));
+
+Assert.assertTrue(successMessage.isDisplayed());
 	}
 }
