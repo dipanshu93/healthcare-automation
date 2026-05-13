@@ -47,11 +47,15 @@ public class EmployeeTest extends BaseTest {
         new WebDriverWait(driver,
                 Duration.ofSeconds(30));
 
-wait.until(ExpectedConditions
-        .visibilityOfElementLocated(
-                By.xpath(
-                        "//*[contains(text(),'Success')]")));
+WebElement toast =
+        wait.until(
+                ExpectedConditions
+                        .visibilityOfElementLocated(
+                                By.cssSelector(
+                                        ".oxd-toast-content")));
 
-Assert.assertTrue(successMessage.isDisplayed());
+Assert.assertTrue(
+        toast.getText()
+                .contains("Success"));
 	}
 }
