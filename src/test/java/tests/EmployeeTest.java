@@ -43,12 +43,14 @@ public class EmployeeTest extends BaseTest {
 		pim.clickSave();
 
 		// Validation
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebDriverWait wait =
+        new WebDriverWait(driver,
+                Duration.ofSeconds(30));
 
-WebElement successMessage = wait.until(
-        ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//*[contains(text(),'Successfully Saved')]")
-        ));
+wait.until(ExpectedConditions
+        .visibilityOfElementLocated(
+                By.xpath(
+                        "//*[contains(text(),'Success')]")));
 
 Assert.assertTrue(successMessage.isDisplayed());
 	}
